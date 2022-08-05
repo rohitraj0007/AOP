@@ -1,0 +1,7 @@
+aop works like a good spy. Whatever call me makes it goes through it and certain tasks based on the input of calls are made.
+Uses :-
+logging,security,transaction
+Audit who,what,when,where
+Exception handling
+log and notify devops viasms/email
+peak times,number of calls
