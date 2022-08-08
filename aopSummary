@@ -5,3 +5,87 @@ Audit who,what,when,where
 Exception handling
 log and notify devops viasms/email
 peak times,number of calls
+
+
+Advantages:--
+remove boiler plate codes
+reusable modules
+resolve code scatter
+applied selectively based on configuration
+disadvantage:--
+too many aspect can make hard to follow the code flow
+minor performance cost foe aspect execution
+
+Aspect:module code for cross cutting concerns(logging,security)
+Advice:what action is taken when it should be applied
+join point:when to apply code during program execution
+Pointcut: a predicate expression for where advice should be applied
+
+Advice type:-
+before advice: run before the method
+After finally advice:run after the method(finally)
+After returning advice:run after the method:(success execution)
+After throwing advice:run after method(if exception thrown)
+Around advice: run before and after method
+
+Weaving:connecting aspect to target object to create and advised object
+types:
+compile time,run time-load time(slowest)
+
+Two framework:-(spring AOP  && Aspectj)
+
+Spring AOP:--security,transaction,cache etc
+-->Spring use run time weaving
+-->light implementation of AOP
+solve common problems in enterprise application
+Advantage:-
+-->uses proxy pattern
+-->simpler to use
+-->can migrate to aspectj when using @aspect annotation
+disadvantages:->only method level join-point
+-->apply aspects only to beans created by spring app context
+-->run time weaving performance cost
+
+AspectJ AOP framework
+-->provide complete support for AOP
+join point:method level,constructor, field
+code weaving:compile time,post compile-time and load time
+Advantage:-
+Support all join points
+work with any pojo not with just beans from app context.
+Faster than spring AOP
+complete AOP support
+Disadvantages:-
+compile time weaving requires extra compilation steps.
+AspectJ point-cut syntax can become complex.
+
+
+Annotations
+@Aspect
+@Before
+@EnableAspectJAutoProxy
+
+PointCut Expression Language
+
+execution(modifier-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param- pattern) throws pattern?)
+
+
+wild cards:-
+startWith*():-any methos starts with the string
+we can put * at return type to give any return type
+
+
+@Pointcut used for expression to be used again and again in advice
+
+
+How to order aspect:==
+@Order(precedence)
+ex @Order(1),@Oreder(2) etc
+it can be positive and negative values too
+lowest number comes first
+there is no fixed rule for those orders who has same precedence
+
+how to read method parameters:-
+using JoinPoint as param
+Object[] args =joinPoint.getArgs();
+
