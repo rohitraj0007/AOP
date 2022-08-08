@@ -4,15 +4,19 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 @Aspect
 @Component
+@Order(1)
 public class MyDemoLOggingAspect {
 	@Pointcut ("execution(public void addCoach())")
 	private void forDaoPackage() {}
 	
-	@Pointcut ("execution(public * addCoach*())")
-	private void forServicePackage() {}
+	@Before ("execution(public * addCoach*())")
+	private void forServicePackage() {
+		System.out.println("\n======>>> executing apiAnalyticsz for forServicePackage");
+	}
 
 	@Pointcut("execution(public void addCoachFor*(*,*))")
 	public void beforeAddAccountAdvice() {}

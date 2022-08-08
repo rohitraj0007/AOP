@@ -73,6 +73,7 @@ execution(modifier-pattern? return-type-pattern declaring-type-pattern? method-n
 wild cards:-
 startWith*():-any methos starts with the string
 we can put * at return type to give any return type
+(..) any number or type of parameter
 
 
 @Pointcut used for expression to be used again and again in advice
@@ -88,4 +89,20 @@ there is no fixed rule for those orders who has same precedence
 how to read method parameters:-
 using JoinPoint as param
 Object[] args =joinPoint.getArgs();
+
+different aspects:
+@Before
+@AfterReturning
+@AfterThrowing
+@After..after finally
+@Around .. its a combination of @Before and @After
+
+ex:-
+
+ProceedingJOinPoint point
+long begin = System.currentMillis();
+object result = point.proceed();
+long duration= end- begin;
+long end = System.currentMillis();
+
 
